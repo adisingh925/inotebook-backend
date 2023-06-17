@@ -17,6 +17,10 @@
   },
   "homepage": "https://github.com/adisingh925/inotebook-backend#readme",
   "dependencies": {
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "mongoose": "^7.3.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
   }
 }
