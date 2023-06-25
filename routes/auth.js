@@ -19,6 +19,8 @@ router.post(
   ],
   async (req, res) => {
     const result = validationResult(req);
+
+    //If there are errors, return Bad request and the errors
     if (!result.isEmpty()) {
       return res.status(400).json({ errors: result.array() });
     }
@@ -44,10 +46,10 @@ router.post(
       });
 
       const data = {
-        user:{
-            id:user.id
-        }
-      }
+        user: {
+          id: user.id,
+        },
+      };
 
       //Create a token
 
@@ -58,8 +60,55 @@ router.post(
         authtoken,
       });
     } catch (error) {
-      console.error(error.message);
-      res.status(500).json({ error: "Internal Server Error" });
+      return res.status(500).json({ error: "Internal Server Error" });
+    }
+  }
+);
+
+router.post(
+  "/login",
+  [
+    body("email", "Enter a valid email").trim().isEmail().escape(),
+    body("password", "Password must be atleast 6 characters")
+      .isLength({ min: 6 })
+      .escape(),
+  ],
+  async (req, res) => {
+    const result = validationResult(req);
+    if (!result.isEmpty()) {
+      return res.status(400).json({ errors: result.array() });
+    }
+
+    const { email, password } = req.body;
+
+    try {
+      let user = await User.findOne({email});
+
+      if (!user) {
+        return res.status(400).json({ error: "Invalid Credentials!" });
+      }
+
+      const passwordCompare = await bcrypt.compare(password, user.password);
+
+      if (!passwordCompare) {
+        return res.status(400).json({ error: "Invalid Credentials!" });
+      }
+
+      const data = {
+        user: {
+          id: user.id,
+        },
+      };
+
+      //Create a token
+      const authtoken = jwt.sign(data, JWT_SECRET);
+
+      return res.status(201).json({
+        message: "login successful!",
+        authtoken,
+      });
+    } catch (error) {
+      return res.status(500).json({ error: "Internal Server Error" });
     }
   }
 );
