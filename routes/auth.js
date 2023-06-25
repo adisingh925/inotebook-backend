@@ -2,8 +2,10 @@ const express = require("express");
 const router = express.Router();
 const User = require("../models/User");
 const bcrypt = require("bcryptjs");
-var jwt = require('jsonwebtoken');
+var jwt = require("jsonwebtoken");
 const { validationResult, body } = require("express-validator");
+
+const JWT_SECRET = "358jhdsfFSDGGW346266($_@^V%$^ V^8";
 
 //Create a new user. Doesn't require authentication
 router.post(
@@ -35,17 +37,26 @@ router.post(
       const securePassword = await bcrypt.hash(req.body.password, salt);
 
       //Create a new user
-      await User.create({
+      user = await User.create({
         name: req.body.name,
         email: req.body.email,
         password: securePassword,
       });
 
-      res
-        .status(201)
-        .json({
-          message: `Hello ${req.body.name}, Your account is created successfully!`,
-        });
+      const data = {
+        user:{
+            id:user.id
+        }
+      }
+
+      //Create a token
+
+      const authtoken = jwt.sign(data, JWT_SECRET);
+
+      return res.status(201).json({
+        message: `Hello ${req.body.name}, Your account is created successfully!`,
+        authtoken,
+      });
     } catch (error) {
       console.error(error.message);
       res.status(500).json({ error: "Internal Server Error" });
