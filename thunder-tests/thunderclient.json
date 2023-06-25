@@ -1,1 +1,21 @@
-[]
+[
+  {
+    "_id": "31cc9475-988f-4bca-a263-ece8f8c0ba81",
+    "colId": "b1b46174-eac8-4606-9e4b-450a1d2495af",
+    "containerId": "1904b7f2-8afd-44ae-a56b-2f0e8c13b813",
+    "name": "create new user",
+    "url": "localhost:5000/api/auth/createuser",
+    "method": "POST",
+    "sortNum": 10000,
+    "created": "2023-06-25T16:45:58.225Z",
+    "modified": "2023-06-25T17:32:07.863Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"name\":\"ben ten\",\n  \"email\":\"benten@gmail.com\",\n  \"password\":\"123456\"\n}",
+      "form": []
+    },
+    "tests": []
+  }
+]
