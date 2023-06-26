@@ -36,5 +36,24 @@
       "form": []
     },
     "tests": []
+  },
+  {
+    "_id": "c3c34fe5-ebd2-4ab8-98f9-6a9a72522140",
+    "colId": "b1b46174-eac8-4606-9e4b-450a1d2495af",
+    "containerId": "",
+    "name": "get user data",
+    "url": "localhost:5000/api/auth/getuser",
+    "method": "POST",
+    "sortNum": 30000,
+    "created": "2023-06-26T10:03:37.244Z",
+    "modified": "2023-06-26T10:23:40.647Z",
+    "headers": [
+      {
+        "name": "Authorization",
+        "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjQ5ODhjNjZjMjdiODc1YWMzYjNlZjRjIn0sImlhdCI6MTY4Nzc3NDU0Nn0.JmJDOUCniHP2LdcHZoJg40X6Q0coLKbHCPHYLqvHmX4"
+      }
+    ],
+    "params": [],
+    "tests": []
   }
 ]

@@ -4,10 +4,9 @@ const User = require("../models/User");
 const bcrypt = require("bcryptjs");
 var jwt = require("jsonwebtoken");
 const { validationResult, body } = require("express-validator");
+const fetchuser = require("../Middleware/fetchuser");
 
-const JWT_SECRET = "358jhdsfFSDGGW346266($_@^V%$^ V^8";
-
-//Create a new user. Doesn't require authentication
+//ROUTE 1 : Create a new user. Doesn't require authentication
 router.post(
   "/createuser",
   [
@@ -53,7 +52,7 @@ router.post(
 
       //Create a token
 
-      const authtoken = jwt.sign(data, JWT_SECRET);
+      const authtoken = jwt.sign(data, process.env.JWT_SECRET);
 
       return res.status(201).json({
         message: `Hello ${req.body.name}, Your account is created successfully!`,
@@ -65,6 +64,7 @@ router.post(
   }
 );
 
+//ROUTE 2 : login a user with email and password.
 router.post(
   "/login",
   [
@@ -82,7 +82,7 @@ router.post(
     const { email, password } = req.body;
 
     try {
-      let user = await User.findOne({email});
+      let user = await User.findOne({ email });
 
       if (!user) {
         return res.status(400).json({ error: "Invalid Credentials!" });
@@ -101,9 +101,9 @@ router.post(
       };
 
       //Create a token
-      const authtoken = jwt.sign(data, JWT_SECRET);
+      const authtoken = jwt.sign(data, process.env.JWT_SECRET);
 
-      return res.status(201).json({
+      return res.status(200).json({
         message: "login successful!",
         authtoken,
       });
@@ -112,5 +112,16 @@ router.post(
     }
   }
 );
+
+//ROUTE 3 : get details of a user. Login required
+router.post("/getuser", fetchuser, async (req, res) => {
+  try {
+    const userId = req.user.id;
+    const user = await User.findById(userId).select("-password");
+    return res.status(200).json(user);
+  } catch (error) {
+    return res.status(500).json({ error: "Internal Server Error" });
+  }
+});
 
 module.exports = router;
