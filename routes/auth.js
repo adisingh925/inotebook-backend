@@ -59,7 +59,7 @@ router.post(
         authtoken,
       });
     } catch (error) {
-      return res.status(500).json({ error: "Internal Server Error" });
+      return res.status(500).json({ error: "Internal Server Error!" });
     }
   }
 );
@@ -108,7 +108,7 @@ router.post(
         authtoken,
       });
     } catch (error) {
-      return res.status(500).json({ error: "Internal Server Error" });
+      return res.status(500).json({ error: "Internal Server Error!" });
     }
   }
 );
@@ -120,7 +120,7 @@ router.post("/getuser", fetchuser, async (req, res) => {
     const user = await User.findById(userId).select("-password");
     return res.status(200).json(user);
   } catch (error) {
-    return res.status(500).json({ error: "Internal Server Error" });
+    return res.status(500).json({ error: "Internal Server Error!" });
   }
 });
 

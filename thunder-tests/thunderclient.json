@@ -8,12 +8,12 @@
     "method": "POST",
     "sortNum": 10000,
     "created": "2023-06-25T16:45:58.225Z",
-    "modified": "2023-06-25T18:50:14.998Z",
+    "modified": "2023-06-26T12:18:42.856Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"name\":\"aditya\",\n  \"email\":\"adisingh925@gmail.com\",\n  \"password\":\"123456\"\n}",
+      "raw": "{\n  \"name\":\"aman\",\n  \"email\":\"aman@gmail.com\",\n  \"password\":\"123456\"\n}",
       "form": []
     },
     "tests": []
@@ -40,17 +40,103 @@
   {
     "_id": "c3c34fe5-ebd2-4ab8-98f9-6a9a72522140",
     "colId": "b1b46174-eac8-4606-9e4b-450a1d2495af",
-    "containerId": "",
+    "containerId": "1904b7f2-8afd-44ae-a56b-2f0e8c13b813",
     "name": "get user data",
     "url": "localhost:5000/api/auth/getuser",
     "method": "POST",
-    "sortNum": 30000,
+    "sortNum": 15000,
     "created": "2023-06-26T10:03:37.244Z",
-    "modified": "2023-06-26T10:23:40.647Z",
+    "modified": "2023-06-26T10:37:43.145Z",
     "headers": [
       {
         "name": "Authorization",
         "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjQ5ODhjNjZjMjdiODc1YWMzYjNlZjRjIn0sImlhdCI6MTY4Nzc3NDU0Nn0.JmJDOUCniHP2LdcHZoJg40X6Q0coLKbHCPHYLqvHmX4"
+      }
+    ],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "95fa2ada-ed61-4b1d-80cd-19e18882aae1",
+    "colId": "b1b46174-eac8-4606-9e4b-450a1d2495af",
+    "containerId": "b5e319b8-cfb7-4ce6-b734-3d3da685d8e7",
+    "name": "read all notes",
+    "url": "localhost:5000/api/notes/fetchallnotes",
+    "method": "GET",
+    "sortNum": 40000,
+    "created": "2023-06-26T10:37:54.100Z",
+    "modified": "2023-06-26T12:32:15.538Z",
+    "headers": [
+      {
+        "name": "Authorization",
+        "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjQ5ODhjNjZjMjdiODc1YWMzYjNlZjRjIn0sImlhdCI6MTY4Nzc4MjcxOX0.4NlvVSG299wr6C_7rXMIAWkJc6YGMs6DxXdYi1Lj3aQ"
+      }
+    ],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "302f4010-c207-444f-ac06-50ac8cacfe23",
+    "colId": "b1b46174-eac8-4606-9e4b-450a1d2495af",
+    "containerId": "b5e319b8-cfb7-4ce6-b734-3d3da685d8e7",
+    "name": "add note",
+    "url": "localhost:5000/api/notes/addnote",
+    "method": "POST",
+    "sortNum": 50000,
+    "created": "2023-06-26T11:19:48.994Z",
+    "modified": "2023-06-26T12:19:09.707Z",
+    "headers": [
+      {
+        "name": "Authorization",
+        "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjQ5OTgyMjJlODJhODIzZTdhYjY1MWI4In0sImlhdCI6MTY4Nzc4MTkyMn0.6xey-KNrqDnuUxRTFgHi5zPwd9sHjb2DVuLGlhpAYqM"
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"title\":\"aman ka note\",\n  \"description\":\"hello i am aman\",\n  \"tag\":\"personal\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "5924423f-40e7-482f-a026-78695d2912da",
+    "colId": "b1b46174-eac8-4606-9e4b-450a1d2495af",
+    "containerId": "b5e319b8-cfb7-4ce6-b734-3d3da685d8e7",
+    "name": "update note",
+    "url": "localhost:5000/api/notes/updatenote/6499823d4437e1768ebe819d",
+    "method": "PUT",
+    "sortNum": 60000,
+    "created": "2023-06-26T11:54:54.907Z",
+    "modified": "2023-06-26T12:19:32.187Z",
+    "headers": [
+      {
+        "name": "Authorization",
+        "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjQ5ODhjNjZjMjdiODc1YWMzYjNlZjRjIn0sImlhdCI6MTY4Nzc3NDg3Mn0.w0qSVjUQFvl31ojB1lXz-LFWT6pGgIWAdJTllukfZew"
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"title\":\"hua hua\",\n  \"description\":\"i am aditya singh hua hua\",\n  \"tag\":\"\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "97877e8a-d933-4e51-b402-99ed556c8dc0",
+    "colId": "b1b46174-eac8-4606-9e4b-450a1d2495af",
+    "containerId": "b5e319b8-cfb7-4ce6-b734-3d3da685d8e7",
+    "name": "delete note",
+    "url": "localhost:5000/api/notes/deletenote/6499761ed4b40aae8bc950f0",
+    "method": "DELETE",
+    "sortNum": 70000,
+    "created": "2023-06-26T12:26:18.087Z",
+    "modified": "2023-06-26T12:33:47.601Z",
+    "headers": [
+      {
+        "name": "Authorization",
+        "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjQ5ODhjNjZjMjdiODc1YWMzYjNlZjRjIn0sImlhdCI6MTY4Nzc4MjcxOX0.4NlvVSG299wr6C_7rXMIAWkJc6YGMs6DxXdYi1Lj3aQ"
       }
     ],
     "params": [],
