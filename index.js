@@ -11,11 +11,7 @@ app.use(express.json());
 
 app.use(
   cors({
-    origin: [
-      "http://localhost:3000",
-      "https://inotebook-71291.web.app/",
-      "https://inotebook-71291.firebaseapp.com/",
-    ],
+    origin: "*",
   })
 );
 
