@@ -1,8 +1,9 @@
 const mongoose = require('mongoose')
-const mongoUri = "mongodb+srv://adisingh925:4kWIDKec6jGaZeyX@cluster0.z54lmqn.mongodb.net/"
+const dotenv = require("dotenv");
+dotenv.config({ path: "./.env" });
 
 const connectToMongo = async() =>{
-    await mongoose.connect(mongoUri)
+    await mongoose.connect(process.env.DATABASE_PATH)
     console.log("connected to mongo")
 }
 
