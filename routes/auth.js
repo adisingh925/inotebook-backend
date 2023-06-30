@@ -21,7 +21,7 @@ router.post(
 
     //If there are errors, return Bad request and the errors
     if (!result.isEmpty()) {
-      return res.status(400).json({ errors: result.array() });
+      return res.status(400).json({ errors: result.array(), code : -1 });
     }
 
     try {
@@ -31,7 +31,7 @@ router.post(
       if (user) {
         return res
           .status(400)
-          .json({ error: "Sorry!, A user with this email already exists!" });
+          .json({ msg: "Sorry!, A user with this email already exists!", code : -1 });
       }
 
       const salt = await bcrypt.genSalt(10);
@@ -55,11 +55,12 @@ router.post(
       const authtoken = jwt.sign(data, process.env.JWT_SECRET);
 
       return res.status(201).json({
-        message: `Hello ${req.body.name}, Your account is created successfully!`,
-        authtoken,
+        msg: `Hello ${req.body.name}, Your account is created successfully!`,
+        token : authtoken,
+        code : 1
       });
     } catch (error) {
-      return res.status(500).json({ error: "Internal Server Error!" });
+      return res.status(500).json({ msg: "Internal Server Error!", code : -1 });
     }
   }
 );
@@ -85,13 +86,13 @@ router.post(
       let user = await User.findOne({ email });
 
       if (!user) {
-        return res.status(400).json({ error: "Invalid Credentials!" });
+        return res.status(400).json({ msg: "Invalid Credentials!", code : -1 });
       }
 
       const passwordCompare = await bcrypt.compare(password, user.password);
 
       if (!passwordCompare) {
-        return res.status(400).json({ error: "Invalid Credentials!" });
+        return res.status(400).json({ msg: "Invalid Credentials!", code : -1 });
       }
 
       const data = {
@@ -104,11 +105,12 @@ router.post(
       const authtoken = jwt.sign(data, process.env.JWT_SECRET);
 
       return res.status(200).json({
-        message: "login successful!",
-        authtoken,
+        msg: "login successful!",
+        token : authtoken,
+        code : 1
       });
     } catch (error) {
-      return res.status(500).json({ error: "Internal Server Error!" });
+      return res.status(500).json({ msg: "Internal Server Error!", code : -1 });
     }
   }
 );
