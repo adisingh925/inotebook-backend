@@ -3,7 +3,7 @@ const connectToMongo = require("./db");
 const dotenv = require("dotenv");
 const cors = require("cors");
 const app = express();
-const port = 65500;
+const port = 5000;
 connectToMongo();
 dotenv.config({ path: "./.env" });
 
@@ -11,7 +11,7 @@ app.use(express.json());
 
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: ["http://localhost:3000"],
   })
 );
 
