@@ -44,11 +44,11 @@
             "colId": "b1b46174-eac8-4606-9e4b-450a1d2495af",
             "containerId": "1904b7f2-8afd-44ae-a56b-2f0e8c13b813",
             "name": "login using credentials",
-            "url": "localhost:5000/api/auth/login",
+            "url": "inotebook-backend-one.vercel.app/api/auth/login",
             "method": "POST",
             "sortNum": 20000,
             "created": "2023-06-25T18:41:30.657Z",
-            "modified": "2023-06-25T18:50:46.237Z",
+            "modified": "2023-06-30T09:33:13.758Z",
             "headers": [],
             "params": [],
             "body": {
