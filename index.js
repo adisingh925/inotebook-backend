@@ -1,11 +1,8 @@
 const express = require("express");
-const connectToMongo = require("./db");
 const cors = require("cors");
+const connectToMongo = require("./db");
 const app = express();
 const port = process.env.PORT;
-connectToMongo();
-
-app.use(express.json());
 
 app.use(
   cors({
@@ -13,10 +10,13 @@ app.use(
   })
 );
 
+app.use(express.json());
+
+connectToMongo();
+
 //Available Routes
+app.use("/",require("./routes/root"))
 app.use("/api/auth", require("./routes/auth"));
 app.use("/api/notes", require("./routes/notes"));
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
-});
+app.listen(port);
