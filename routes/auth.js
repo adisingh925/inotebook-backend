@@ -1,14 +1,10 @@
 const express = require("express");
-const cors = require("cors");
 const router = express.Router();
-const app = express();
 const User = require("../models/User");
 const bcrypt = require("bcryptjs");
 var jwt = require("jsonwebtoken");
 const { validationResult, body } = require("express-validator");
 const fetchuser = require("../Middleware/fetchuser");
-
-app.use(cors());
 
 //ROUTE 1 : Create a new user. Doesn't require authentication
 router.post(

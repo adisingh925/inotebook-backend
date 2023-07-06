@@ -1,12 +1,8 @@
 const express = require("express");
-const cors = require("cors");
-const app = express();
 const router = express.Router();
 var fetchuser = require("../Middleware/fetchuser");
 var Note = require("../models/Note");
 const { validationResult, body } = require("express-validator");
-
-app.use(cors());
 
 //ROUTE 1 : Get all the notes : GET api/notes/fetchallnotes
 router.get("/fetchallnotes", fetchuser, async (req, res) => {
