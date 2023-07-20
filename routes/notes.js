@@ -127,6 +127,8 @@ router.get("/readnote", async (req, res) => {
   try {
     const note = await Note.findById(req.query.id);
 
+    console.log(req.query.id)
+
     if (!note) {
       return res.status(404).json({ msg: "Resource not found!", code: -1 });
     }
