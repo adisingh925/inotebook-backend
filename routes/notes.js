@@ -122,4 +122,21 @@ router.post(
   }
 );
 
+//ROUTE 5 : read a note in new screen it will also be used for sharing of the notes
+router.post("/readnote/:id", async (req, res) => {
+  try {
+    const note = await Note.findById(req.params.id);
+
+    if (!note) {
+      return res.status(404).json({ msg: "Resource not found!", code: -1 });
+    }
+
+    return res
+      .status(200)
+      .json({ msg: "Note successfully Fetched!", data: note, code: 1 });
+  } catch (error) {
+    return res.status(500).json({ msg: "Internal Server Error!", code: -1 });
+  }
+});
+
 module.exports = router;
