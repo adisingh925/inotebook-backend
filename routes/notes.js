@@ -123,7 +123,7 @@ router.post(
 );
 
 //ROUTE 5 : read a note in new screen it will also be used for sharing of the notes
-router.post("/readnote/:id", async (req, res) => {
+router.get("/readnote/:id", async (req, res) => {
   try {
     const note = await Note.findById(req.params.id);
 
