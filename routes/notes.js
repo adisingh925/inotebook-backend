@@ -123,9 +123,9 @@ router.post(
 );
 
 //ROUTE 5 : read a note in new screen it will also be used for sharing of the notes
-router.get("/readnote/:id", async (req, res) => {
+router.get("/readnote", async (req, res) => {
   try {
-    const note = await Note.findById(req.params.id);
+    const note = await Note.findById(req.query.id);
 
     if (!note) {
       return res.status(404).json({ msg: "Resource not found!", code: -1 });
